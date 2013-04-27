@@ -1,4 +1,4 @@
-# Django settings for project project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -121,8 +121,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'social_auth',
+
     'meetup',
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -152,3 +155,14 @@ LOGGING = {
         },
     }
 }
+
+
+# Django Social Auth settings
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.github.GithubBackend',
+)
+LOGIN_REDIRECT_URL = '/'
+
+
+GITHUB_APP_ID = os.environ.get('GITHUB_APP_ID')
+GITHUB_API_SECRET = os.environ.get('GITHUB_APP_SECRET')

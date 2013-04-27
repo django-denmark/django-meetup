@@ -7,4 +7,6 @@ urlpatterns = patterns(
     '',
     url(r'^', include('meetup.urls', namespace='meetup', app_name='meetup')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('social_auth.urls')),
+
 )
