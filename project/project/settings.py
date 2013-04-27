@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'social_auth',
+    'south',
 
     'meetup',
 )

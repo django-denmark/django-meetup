@@ -30,7 +30,9 @@
 {% block 'extra_js' %}
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#datetimepicker').datetimepicker();
+        $('#datetimepicker').datetimepicker({
+            pickSeconds: false
+        });
     });
 </script>
 {% endblock %}

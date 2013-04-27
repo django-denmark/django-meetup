@@ -63,7 +63,7 @@ class Speaker(CreatedUpdatedModel):
 class Profile(CreatedUpdatedModel):
     user = models.OneToOneField(User)
     bio = models.TextField()
-    url = models.URLField()
+    url = models.URLField(null=True)
 
 
 class RSVP(CreatedUpdatedModel):
