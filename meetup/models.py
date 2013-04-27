@@ -28,6 +28,9 @@ class Meetup(CreatedUpdatedModel):
     when = models.DateTimeField()
     venue = models.ForeignKey('Venue')
 
+    class Meta:
+        ordering = ['when']
+
     def __unicode__(self):
         return u'{title} at {when} at {venue}'.format(
             title=self.title,
