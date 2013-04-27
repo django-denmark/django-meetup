@@ -1,8 +1,10 @@
 from django.contrib import admin
 
-from .models import Meetup, Venue, Speaker, Talk
+import models
 
-admin.site.register(Meetup)
-admin.site.register(Venue)
-admin.site.register(Speaker)
-admin.site.register(Talk)
+admin.site.register(models.Meetup)
+admin.site.register(models.Venue)
+admin.site.register(models.Speaker)
+admin.site.register(models.Talk)
+admin.site.register(models.Profile)
+admin.site.register(models.RSVP)

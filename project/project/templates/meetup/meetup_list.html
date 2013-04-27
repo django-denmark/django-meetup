@@ -15,8 +15,24 @@ Meetups
     </a>
     <div class="media-body">
         <h4 class="media-heading">{{ meetup.title }}</h4>
-        {{ meetup.when }}<br />
-        {{ meetup.venue }}
+        {{ meetup.when }} at <a
+            href="http://findvej.dk/{{meetup.venue.address}}">{{ meetup.venue }}</a><br />
+
+        {% if meetup.get_attending %}
+            <strong>Attending:</strong>
+            {% for rsvp in meetup.get_attending %}
+                {{ rsvp.user }}
+            {% endfor %}
+            <br />
+        {% endif %}
+
+        {% if meetup.get_not_attending %}
+            <strong>Not attending:</strong>
+            {% for rsvp in meetup.get_not_attending %}
+                {{ rsvp.user }}
+            {% endfor %}
+            <br />
+        {% endif %}
     </div>
 </li>
 {% endfor %}
