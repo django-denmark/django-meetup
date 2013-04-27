@@ -1,0 +1,37 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+{{ meetup.title }}
+{% endblock %}
+
+{% block 'content' %}
+{{ meetup.title }} at {{ meetup.when }}
+
+<hr />
+
+{% if not user_rsvp %}
+<div class="alert alert-info">
+    You have not RSVP'd to this meetup.<br />
+</div>
+{% endif %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{message.tags}}{%endif%}">
+        <i class="icon-thumbs-up"></i> {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<form action="" method="POST" class="btn-group">{% csrf_token %}
+    <button name="rsvp" value="2"
+            class="btn {% if user_rsvp == 2 %}btn-success{% endif %}">
+        <i class="icon-ok"></i> Attending
+    </button>
+    <button name="rsvp" value="1"
+            class="btn {% if user_rsvp == 1 %}btn-danger{% endif %}">
+        <i class="icon-remove"></i> Not attending
+    </button>
+</form>
+
+{% endblock %}
