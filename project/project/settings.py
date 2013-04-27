@@ -1,4 +1,5 @@
 import os
+import sys
 
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 TEMPLATE_DEBUG = DEBUG
@@ -6,6 +7,7 @@ TEMPLATE_DEBUG = DEBUG
 
 root = lambda x: os.path.join(os.path.dirname(__file__), x)
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
