@@ -9,11 +9,6 @@
 
 <hr />
 
-{% if not user_rsvp %}
-<div class="alert alert-info">
-    You have not RSVP'd to this meetup.<br />
-</div>
-{% endif %}
 
 {% if messages %}
     {% for message in messages %}
@@ -23,18 +18,26 @@
     {% endfor %}
 {% endif %}
 
-<form action="" method="POST">{% csrf_token %}
-    <div class="btn-group">
-        <button name="rsvp" value="2"
-                class="btn {% if user_rsvp == 2 %}btn-success{% endif %}">
-            <i class="icon-ok"></i> Attending
-        </button>
-        <button name="rsvp" value="1"
-                class="btn {% if user_rsvp == 1 %}btn-danger{% endif %}">
-            <i class="icon-remove"></i> Not attending
-        </button>
+{% if user.is_authenticated %}
+    {% if not user_rsvp %}
+    <div class="alert alert-info">
+        You have not RSVP'd to this meetup.<br />
     </div>
-</form>
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+        <div class="btn-group">
+            <button name="rsvp" value="2"
+                    class="btn {% if user_rsvp == 2 %}btn-success{% endif %}">
+                <i class="icon-ok"></i> Attending
+            </button>
+            <button name="rsvp" value="1"
+                    class="btn {% if user_rsvp == 1 %}btn-danger{% endif %}">
+                <i class="icon-remove"></i> Not attending
+            </button>
+        </div>
+    </form>
+{% endif %}
 
 {% if attendees %}
     <h4>Attending:</h4>

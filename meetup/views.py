@@ -24,18 +24,22 @@ class MeetupDetail(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(MeetupDetail, self).get_context_data(*args, **kwargs)
 
-        try:
-            user_rsvp = self.request.user.rsvp_set.get(
-                meetup=self.get_object()
-            ).rsvp
-        except models.RSVP.DoesNotExist:
-            user_rsvp = None
+        if self.request.user.is_authenticated():
+            try:
+                user_rsvp = self.request.user.rsvp_set.get(
+                    meetup=self.get_object()
+                ).rsvp
+            except models.RSVP.DoesNotExist:
+                user_rsvp = None
+
+            context.update({
+                'user_rsvp': user_rsvp,
+            })
 
         non_attendees = self.get_object().rsvp_set.filter(rsvp=1)
         attendees = self.get_object().rsvp_set.filter(rsvp=2)
 
         context.update({
-            'user_rsvp': user_rsvp,
             'non_attendees': non_attendees,
             'attendees': attendees,
         })
