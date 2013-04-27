@@ -1,11 +1,13 @@
 import os
+import sys
 
-import os
-
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 TEMPLATE_DEBUG = DEBUG
 
-root = lambda x: os.path.join(os.path.dirname(__file__), x)
+
+root = lambda x: os.path.abspath(os.path.join(os.path.dirname(__file__), x))
+
+sys.path.append(os.path.dirname(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -105,7 +107,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -167,3 +169,12 @@ LOGIN_REDIRECT_URL = '/'
 
 GITHUB_APP_ID = os.environ.get('GITHUB_APP_ID')
 GITHUB_API_SECRET = os.environ.get('GITHUB_APP_SECRET')
+
+# Heroku stuff
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+dj_conf = dj_database_url.config()
+DATABASES['default'] = dj_conf or DATABASES['default']
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
