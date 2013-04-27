@@ -162,6 +162,7 @@ LOGGING = {
 
 # Django Social Auth settings
 AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
     'social_auth.backends.contrib.github.GithubBackend',
 )
 LOGIN_REDIRECT_URL = '/'
