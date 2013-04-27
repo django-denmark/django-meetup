@@ -1,0 +1,13 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+Meetups
+{% endblock %}
+
+{% block 'content' %}
+{% for meetup in meetups %}
+<a href="{% url 'meetup:meetup-detail' meetup.pk %}">{{ meetup.title }}</a>
+<br />
+{% endfor %}
+
+{% endblock %}

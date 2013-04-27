@@ -1,0 +1,9 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+{{ meetup.title }}
+{% endblock %}
+
+{% block 'content' %}
+{{ meetup.title }} at {{ meetup.when }}
+{% endblock %}

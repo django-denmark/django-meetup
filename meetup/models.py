@@ -2,30 +2,34 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class CreatedUpdatedModel(object):
-    created = models.DateTime(auto_now_add=True)
-    updated = models.DateTime(auto_now=True)
+class CreatedUpdatedModel(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
-class Talk(models.Model, CreatedUpdatedModel):
+class Talk(CreatedUpdatedModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    speaker = models.ForeignKey(User)
+    speaker = models.ForeignKey('Speaker')
     meetup = models.ForeignKey('Meetup')
     slides = models.URLField()
 
 
-class Meetup(models.Model, CreatedUpdatedModel):
+class Meetup(CreatedUpdatedModel):
+    title = models.CharField(max_length=255)
     when = models.DateTimeField()
     venue = models.ForeignKey('Venue')
 
 
-class Venue(models.Model, CreatedUpdatedModel):
+class Venue(CreatedUpdatedModel):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
 
 
-class Speaker(models.Model, CreatedUpdatedModel):
+class Speaker(CreatedUpdatedModel):
     user = models.ForeignKey(User, null=True)
     name = models.CharField(max_length=255)
     bio = models.TextField()
