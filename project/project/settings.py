@@ -1,7 +1,7 @@
 import os
 import sys
 
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', 'True') == 'False')
 TEMPLATE_DEBUG = DEBUG
 
 
