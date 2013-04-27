@@ -3,4 +3,6 @@ from .models import Meetup
 
 
 class MeetupForm(forms.ModelForm):
-    model = Meetup
+
+    class Meta:
+        model = Meetup

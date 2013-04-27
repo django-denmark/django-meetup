@@ -1,7 +1,11 @@
 import os
 
+import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+root = lambda x: os.path.join(os.path.dirname(__file__), x)
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -108,9 +112,7 @@ ROOT_URLCONF = 'project.urls'
 WSGI_APPLICATION = 'project.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    root('templates'),
 )
 
 INSTALLED_APPS = (

@@ -28,6 +28,9 @@ class Venue(CreatedUpdatedModel):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Speaker(CreatedUpdatedModel):
     user = models.ForeignKey(User, null=True)
