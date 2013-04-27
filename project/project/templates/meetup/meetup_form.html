@@ -2,7 +2,35 @@
 
 {% block 'content' %}
 <form action="" method="POST">{% csrf_token %}
-    {{ form }}<br />
+    {{ form.title.errors}}
+    {{ form.title.label_tag }}
+    {{ form.title }}<br />
+
+    {{ form.venue.errors}}
+    {{ form.venue.label_tag }}
+    {{ form.venue }}<br />
+
+    {{ form.when.errors}}
+    {{ form.when.label_tag }}
+
+    <div id="datetimepicker"  class="input-append date">
+        <input data-format="yyyy-MM-dd hh:mm:ss" id="id_when" name="when" type="text"></input>
+        <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+        </span>
+    </div>
+
+    <br />
+
     <button class="btn" type="submit">Create</button>
 </form>
+{% endblock %}
+
+{% block 'extra_js' %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datetimepicker').datetimepicker();
+    });
+</script>
 {% endblock %}
