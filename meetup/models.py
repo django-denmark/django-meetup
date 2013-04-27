@@ -44,9 +44,6 @@ class Meetup(CreatedUpdatedModel):
     def get_not_attending(self):
         return self.rsvp_set.filter(rsvp=NOT_ATTENDING)
 
-    def get_maybe_attending(self):
-        return self.rsvp_set.filter(rsvp=MAYBE_ATTENDING)
-
 
 class Venue(CreatedUpdatedModel):
     name = models.CharField(max_length=255)

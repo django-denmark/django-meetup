@@ -31,8 +31,13 @@ class MeetupDetail(DetailView):
         except models.RSVP.DoesNotExist:
             user_rsvp = None
 
+        non_attendees = self.get_object().rsvp_set.filter(rsvp=1)
+        attendees = self.get_object().rsvp_set.filter(rsvp=2)
+
         context.update({
             'user_rsvp': user_rsvp,
+            'non_attendees': non_attendees,
+            'attendees': attendees,
         })
 
         return context

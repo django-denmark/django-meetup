@@ -23,15 +23,31 @@
     {% endfor %}
 {% endif %}
 
-<form action="" method="POST" class="btn-group">{% csrf_token %}
-    <button name="rsvp" value="2"
-            class="btn {% if user_rsvp == 2 %}btn-success{% endif %}">
-        <i class="icon-ok"></i> Attending
-    </button>
-    <button name="rsvp" value="1"
-            class="btn {% if user_rsvp == 1 %}btn-danger{% endif %}">
-        <i class="icon-remove"></i> Not attending
-    </button>
+<form action="" method="POST">{% csrf_token %}
+    <div class="btn-group">
+        <button name="rsvp" value="2"
+                class="btn {% if user_rsvp == 2 %}btn-success{% endif %}">
+            <i class="icon-ok"></i> Attending
+        </button>
+        <button name="rsvp" value="1"
+                class="btn {% if user_rsvp == 1 %}btn-danger{% endif %}">
+            <i class="icon-remove"></i> Not attending
+        </button>
+    </div>
 </form>
+
+{% if attendees %}
+    <h4>Attending:</h4>
+    {% for attendee in attendees %}
+        {{ attendee.user }}
+    {% endfor %}
+{% endif %}
+
+{% if non_attendees %}
+    <h4>Not attending:</h4>
+    {% for non_attendee in non_attendees %}
+        {{ non_attendee.user }}
+    {% endfor %}
+{% endif %}
 
 {% endblock %}
