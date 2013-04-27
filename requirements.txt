@@ -7,3 +7,4 @@ httplib2==0.8
 oauth2==1.5.211
 python-openid==2.2.5
 wsgiref==0.1.2
+psycopg2
