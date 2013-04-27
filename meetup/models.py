@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class CreatedUpdatedModel(models.Model):
@@ -22,6 +23,16 @@ class Meetup(CreatedUpdatedModel):
     title = models.CharField(max_length=255)
     when = models.DateTimeField()
     venue = models.ForeignKey('Venue')
+
+    def __unicode__(self):
+        return u'{title} at {when} at {venue}'.format(
+            title=self.title,
+            when=self.when,
+            venue=self.venue,
+        )
+
+    def get_absolute_url(self):
+        return reverse('meetup:meetup-detail', kwargs={'pk': self.id})
 
 
 class Venue(CreatedUpdatedModel):
