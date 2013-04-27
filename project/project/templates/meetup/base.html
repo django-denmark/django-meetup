@@ -1,10 +1,24 @@
+<!DOCTYPE HTML>
 <html>
     <head>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     </head>
 
 <body>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Copenhagen Django Group</a>
+            <ul class="nav">
+                <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row-fluid">
@@ -15,5 +29,9 @@
 
     <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-datetimepicker.min.js"></script>
+
+    {% block 'extra_js' %}
+    {% endblock %}
 </body>
 </html>
