@@ -8,6 +8,15 @@
 
 <body>
 
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Copenhagen Django Group</a>
+            <ul class="nav">
+                <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row-fluid">
             {% block 'content' %}

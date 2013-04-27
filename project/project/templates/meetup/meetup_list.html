@@ -1,0 +1,26 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+Meetups
+{% endblock %}
+
+{% block 'content' %}
+
+<ul class="media-list">
+
+{% for meetup in meetups %}
+<li class="media">
+    <a class="pull-left" href="{% url 'meetup:meetup-detail' meetup.pk %}">
+        <img class="media-object" src="http://placekitten.com/g/70/70">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">{{ meetup.title }}</h4>
+        {{ meetup.when }}<br />
+        {{ meetup.venue }}
+    </div>
+</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}
