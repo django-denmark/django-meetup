@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
-(NOT_ATTENDING,
- ATTENDING,
- MAYBE_ATTENDING) = range(3)
+NOT_ATTENDING = 1
+ATTENDING = 2
 
 
 class CreatedUpdatedModel(models.Model):
