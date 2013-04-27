@@ -18,20 +18,24 @@ Meetups
         {{ meetup.when }} at <a
             href="http://findvej.dk/{{meetup.venue.address}}">{{ meetup.venue }}</a><br />
 
-        {% if meetup.get_attending %}
-            <strong>Attending:</strong>
-            {% for rsvp in meetup.get_attending %}
-                {{ rsvp.user }}
-            {% endfor %}
-            <br />
-        {% endif %}
+        {% if not meetup.get_attending and not meetup.get_not_attending %}
+            <strong>No one has RSVP'd yet.</strong>
+        {% else %}
+            {% if meetup.get_attending %}
+                <strong>Attending:</strong>
+                {% for rsvp in meetup.get_attending %}
+                    {{ rsvp.user }}
+                {% endfor %}
+                <br />
+            {% endif %}
 
-        {% if meetup.get_not_attending %}
-            <strong>Not attending:</strong>
-            {% for rsvp in meetup.get_not_attending %}
-                {{ rsvp.user }}
-            {% endfor %}
-            <br />
+            {% if meetup.get_not_attending %}
+                <strong>Not attending:</strong>
+                {% for rsvp in meetup.get_not_attending %}
+                    {{ rsvp.user }}
+                {% endfor %}
+                <br />
+            {% endif %}
         {% endif %}
     </div>
 </li>

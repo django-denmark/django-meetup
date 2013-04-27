@@ -13,6 +13,9 @@
             <a class="brand" href="#">Copenhagen Django Group</a>
             <ul class="nav">
                 <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

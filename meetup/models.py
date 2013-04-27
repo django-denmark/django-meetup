@@ -75,7 +75,6 @@ class RSVP(CreatedUpdatedModel):
     RSVP_CHOICES = (
         (NOT_ATTENDING, _(u'No')),
         (ATTENDING, _(u'Yes')),
-        (MAYBE_ATTENDING, _(u'Maybe')),
     )
 
     user = models.ForeignKey(User)
@@ -95,7 +94,5 @@ class RSVP(CreatedUpdatedModel):
             result = result.format(rsvp=_(u'not attending'))
         elif self.rsvp == ATTENDING:
             result = result.format(rsvp=_(u'attending'))
-        elif self.rsvp == MAYBE_ATTENDING:
-            result = result.format(rsvp=_(u'maybe attending'))
 
         return result
