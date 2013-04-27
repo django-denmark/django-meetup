@@ -15,6 +15,8 @@
                 <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
+                {% else %}
+                <li><a href="{% url "socialauth_begin" "github" %}">Login</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -26,6 +28,7 @@
             {% endblock %}
         </div>
     </div>
+
 
     <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
