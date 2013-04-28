@@ -120,7 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'project.project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -140,8 +140,8 @@ INSTALLED_APPS = (
     'social_auth',
     'south',
 
-    'utils',
-    'meetup',
+    'project.project.utils',
+    'project.project.meetup',
 )
 
 
