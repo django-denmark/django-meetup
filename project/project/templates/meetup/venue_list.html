@@ -7,7 +7,10 @@
 {% block 'content' %}
 
     {% if user.is_authenticated %}
-        <li><a href="{% url 'meetup:venue-create' %}">Create venue</a></li>
+        <a class="btn" href="{% url 'meetup:venue-create' %}">
+            Create venue
+        </a>
+        <hr />
     {% endif %}
 
     {% for venue in venues %}
