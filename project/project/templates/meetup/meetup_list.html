@@ -6,6 +6,12 @@ Meetups
 
 {% block 'content' %}
 
+{% if user.is_authenticated %}
+	<ul>
+	<li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
+	</ul>
+{% endif %}
+
 {% include 'meetup/includes/meetup_list.html' %}
 
 {% endblock %}

@@ -86,7 +86,10 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('DJANGO_SECRET', 'k^1tq8!s2(4o6&o0p3vs69&bwckf=mvpr^h5fp(-=i8#hoz&it')
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET',
+    'k^1tq8!s2(4o6&o0p3vs69&bwckf=mvpr^h5fp(-=i8#hoz&it'
+)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -104,6 +107,17 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
 )
 
 ROOT_URLCONF = 'urls'
@@ -126,6 +140,7 @@ INSTALLED_APPS = (
     'social_auth',
     'south',
 
+    'utils',
     'meetup',
 )
 
