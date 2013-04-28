@@ -6,11 +6,8 @@ TEMPLATE_DEBUG = DEBUG
 
 root = lambda x: os.path.abspath(os.path.join(os.path.dirname(__file__), x))
 
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__))))
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-print sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -42,7 +39,7 @@ TIME_ZONE = 'Europe/Copenhagen'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'da-dk'
+LANGUAGE_CODE = 'en-US'
 
 SITE_ID = 1
 
@@ -124,7 +121,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
 )
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'project.project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -144,8 +141,8 @@ INSTALLED_APPS = (
     'social_auth',
     'south',
 
-    'project.project.utils',
-    'project.project.meetup',
+    'utils',
+    'meetup',
 )
 
 
