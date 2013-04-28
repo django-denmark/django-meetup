@@ -15,6 +15,7 @@
                 <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
+                <li><a href="{% url 'admin:logout' %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url "socialauth_begin" "github" %}">Login</a></li>
                 {% endif %}
