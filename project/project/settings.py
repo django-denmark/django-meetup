@@ -6,7 +6,8 @@ TEMPLATE_DEBUG = DEBUG
 
 root = lambda x: os.path.abspath(os.path.join(os.path.dirname(__file__), x))
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
