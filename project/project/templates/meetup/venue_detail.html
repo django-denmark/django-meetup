@@ -1,0 +1,29 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+    {{ venue.name }}
+{% endblock %}
+
+{% block 'content' %}
+
+{{ venue.name}}<br />
+<a href="http://findvej.dk/{{ venue.address }}">{{ venue.address}}</a>
+
+<hr />
+
+{% if not venue.get_future_meetups and not venue.get_past_meetups %}
+This venue has had no meetups.
+{% else %}
+
+{% if venue.get_future_meetups %}
+<h4>Upcoming meetups:</h4>
+{% include 'meetup/includes/meetup_list.html' with meetups=venue.get_future_meetups %}
+{% endif %}
+
+{% if venue.get_past_meetups %}
+<h4>Past meetups:</h4>
+{% include 'meetup/includes/meetup_list.html' with meetups=venue.get_past_meetups %}
+{% endif %}
+{% endif %}
+
+{% endblock %}

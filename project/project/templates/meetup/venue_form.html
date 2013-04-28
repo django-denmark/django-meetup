@@ -1,0 +1,9 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'content' %}
+<form action="" method="POST">{% csrf_token %}
+    {{ form }}
+    <br />
+    <button class="btn" type="submit">Create</button>
+</form>
+{% endblock %}

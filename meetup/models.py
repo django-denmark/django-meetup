@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 NOT_ATTENDING = 1
 ATTENDING = 2
@@ -54,6 +55,17 @@ class Venue(CreatedUpdatedModel):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('meetup:venue-detail', kwargs={'pk': self.id})
+
+    def get_future_meetups(self):
+        now = timezone.now()
+        return self.meetup_set.filter(when__gt=now)
+
+    def get_past_meetups(self):
+        now = timezone.now()
+        return self.meetup_set.filter(when__lt=now)
 
 
 class Speaker(CreatedUpdatedModel):

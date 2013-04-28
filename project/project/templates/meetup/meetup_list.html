@@ -6,43 +6,6 @@ Meetups
 
 {% block 'content' %}
 
-<ul class="media-list">
-
-{% for meetup in meetups %}
-<li class="media">
-    <a class="pull-left" href="{% url 'meetup:meetup-detail' meetup.pk %}">
-        <img class="media-object" src="http://placekitten.com/g/70/70">
-    </a>
-    <div class="media-body">
-        <a href="{% url 'meetup:meetup-detail' meetup.pk %}">
-            <h4 class="media-heading">{{ meetup.title }}</h4>
-        </a>
-        {{ meetup.when }} at <a
-            href="http://findvej.dk/{{meetup.venue.address}}">{{ meetup.venue }}</a><br />
-
-        {% if not meetup.get_attending and not meetup.get_not_attending %}
-            <strong>No one has RSVP'd yet.</strong>
-        {% else %}
-            {% if meetup.get_attending %}
-                <strong>Attending:</strong>
-                {% for rsvp in meetup.get_attending %}
-                    {{ rsvp.user }}
-                {% endfor %}
-                <br />
-            {% endif %}
-
-            {% if meetup.get_not_attending %}
-                <strong>Not attending:</strong>
-                {% for rsvp in meetup.get_not_attending %}
-                    {{ rsvp.user }}
-                {% endfor %}
-                <br />
-            {% endif %}
-        {% endif %}
-    </div>
-</li>
-{% endfor %}
-</ul>
-
+{% include 'meetup/includes/meetup_list.html' %}
 
 {% endblock %}

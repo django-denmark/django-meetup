@@ -1,8 +1,14 @@
 from django import forms
-from .models import Meetup
+import models
 
 
 class MeetupForm(forms.ModelForm):
 
     class Meta:
-        model = Meetup
+        model = models.Meetup
+
+
+class VenueForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Venue

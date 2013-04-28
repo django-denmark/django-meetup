@@ -6,8 +6,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 
 import models
-
-from .forms import MeetupForm
+import forms
 
 
 class MeetupList(ListView):
@@ -81,9 +80,31 @@ class MeetupDetail(DetailView):
 
 class MeetupCreate(CreateView):
     model = models.Meetup
-    form = MeetupForm
+    form = forms.MeetupForm
     template_name = 'meetup/meetup_form.html'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(MeetupCreate, self).dispatch(request, *args, **kwargs)
+
+
+class VenueCreate(CreateView):
+    model = models.Venue
+    form = forms.VenueForm
+    template_name = 'meetup/venue_form.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(VenueCreate, self).dispatch(request, *args, **kwargs)
+
+
+class VenueDetail(DetailView):
+    model = models.Venue
+    template_name = 'meetup/venue_detail.html'
+    context_object_name = 'venue'
+
+
+class VenueList(ListView):
+    model = models.Venue
+    template_name = 'meetup/venue_list.html'
+    context_object_name = 'venues'

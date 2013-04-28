@@ -1,0 +1,11 @@
+{% extends 'meetup/base.html' %}
+
+{% block 'title' %}
+    Venue list
+{% endblock %}
+
+{% block 'content' %}
+    {% for venue in venues %}
+        <a href="{% url 'meetup:venue-detail' venue.pk %}">{{ venue }}</a><br />
+    {% endfor %}
+{% endblock %}
