@@ -4,7 +4,6 @@ import sys
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', 'True') != 'False')
 TEMPLATE_DEBUG = DEBUG
 
-
 root = lambda x: os.path.abspath(os.path.join(os.path.dirname(__file__), x))
 
 sys.path.append(os.path.dirname(__file__))
@@ -149,17 +148,23 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'console': {
+            'level': 'WARN',
+            'class': 'logging.StreamHandler',
+            # 'formatter': 'simple'
+        },
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['console', 'mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
+            'propagate': False,
         },
     }
 }
 
+ALLOWED_HOSTS = ['pycph.dk', 'djangocph.dk']
 
 # Django Social Auth settings
 AUTHENTICATION_BACKENDS = (
