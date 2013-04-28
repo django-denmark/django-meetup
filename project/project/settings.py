@@ -144,8 +144,8 @@ INSTALLED_APPS = (
     'social_auth',
     'south',
 
-    'project.utils',
-    'project.meetup',
+    'project.project.utils',
+    'project.project.meetup',
 )
 
 

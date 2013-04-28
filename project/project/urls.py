@@ -6,7 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^logout/$', 'django.contrib.auth.views.logout', name="my_logout"),
-    url(r'^', include('meetup.urls', namespace='meetup', app_name='meetup')),
+    url(r'^', include('project.project.meetup.urls', namespace='meetup', app_name='meetup')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('social_auth.urls')),
 )
