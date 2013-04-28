@@ -1,0 +1,20 @@
+<li class="media">
+    <a class="pull-left" href="{% url 'meetup:meetup-detail' meetup.pk %}">
+        <img class="media-object" src="http://placekitten.com/g/70/70">
+    </a>
+    <div class="media-body">
+        <a href="{% url 'meetup:meetup-detail' meetup.pk %}">
+            <h4 class="media-heading">{{ meetup.title }}</h4>
+        </a> {{ meetup.when }} at
+        <a href="http://findvej.dk/{{meetup.venue.address}}">
+            {{ meetup.venue }}
+        </a><br />
+
+        {% if meetup.num_attending %}
+            {{ meetup.num_attending }} attending
+        {% else %}
+            No one is attending.
+        {% endif %}
+
+    </div>
+</li>

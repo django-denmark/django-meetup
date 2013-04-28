@@ -6,6 +6,10 @@ Meetups
 
 {% block 'content' %}
 
-{% include 'meetup/includes/meetup_list.html' %}
+<ul class="media-list">
+{% for meetup in meetups %}
+{% include 'meetup/includes/meetup_item.html' %}
+{% endfor %}
+</ul>
 
 {% endblock %}

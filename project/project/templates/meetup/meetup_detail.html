@@ -39,18 +39,16 @@
     </form>
 {% endif %}
 
-{% if attendees %}
-    <h4>Attending:</h4>
-    {% for attendee in attendees %}
-        {{ attendee.user }}
-    {% endfor %}
-{% endif %}
+{% for rsvp in rsvps %}
+    {% ifchanged rsvp.rsvp %}
+        {% if rsvp.rsvp == 2 %}
+            <h4>Attending:</h4>
+        {% else %}
+            <h4>Not attending:</h4>
+        {% endif %}
+    {% endifchanged %}
+    {{ rsvp.user }}
 
-{% if non_attendees %}
-    <h4>Not attending:</h4>
-    {% for non_attendee in non_attendees %}
-        {{ non_attendee.user }}
-    {% endfor %}
-{% endif %}
+{% endfor %}
 
 {% endblock %}

@@ -17,13 +17,22 @@ This venue has had no meetups.
 
 {% if venue.get_future_meetups %}
 <h4>Upcoming meetups:</h4>
-{% include 'meetup/includes/meetup_list.html' with meetups=venue.get_future_meetups %}
+<ul class="media-list">
+{% for meetup in venue.get_future_meetups %}
+{% include 'meetup/includes/meetup_item.html' %}
+{% endfor %}
+</ul>
 {% endif %}
 
 {% if venue.get_past_meetups %}
 <h4>Past meetups:</h4>
-{% include 'meetup/includes/meetup_list.html' with meetups=venue.get_past_meetups %}
+<ul class="media-list">
+{% for meetup in venue.get_past_meetups %}
+{% include 'meetup/includes/meetup_item.html' %}
+{% endfor %}
+</ul>
 {% endif %}
+
 {% endif %}
 
 {% endblock %}
