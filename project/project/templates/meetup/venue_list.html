@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block 'content' %}
+
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'meetup:venue-create' %}">Create venue</a></li>
+    {% endif %}
+
     {% for venue in venues %}
         <a href="{% url 'meetup:venue-detail' venue.pk %}">{{ venue }}</a><br />
     {% endfor %}

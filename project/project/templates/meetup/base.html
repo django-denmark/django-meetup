@@ -7,16 +7,16 @@
     </head>
 
 <body>
-
+    {% load active %}
     <div class="navbar">
         <div class="navbar-inner">
             <a class="brand" href="#">Copenhagen Django Group</a>
             <ul class="nav">
-                <li class="active"><a href="{% url 'meetup:meetup-list' %}">Meetups</a></li>
+                {% url 'meetup:meetup-list' as meetup_list_url %}
+                <li class="{% active meetup_list_url %}"><a href="{{meetup_list_url}}">Meetups</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
-                <li><a href="{% url 'meetup:venue-create' %}">Create venue</a></li>
-                <li><a href="{% url 'meetup:venue-list' %}">Venues</a></li>
+                {% url 'meetup:venue-list' as venue_list_url %}
+                <li class="{% active venue_list_url %}"><a href="{% url 'meetup:venue-list' %}">Venues</a></li>
                 <li><a href="{% url 'admin:logout' %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url "socialauth_begin" "github" %}">Login</a></li>
