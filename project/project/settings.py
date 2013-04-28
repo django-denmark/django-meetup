@@ -6,8 +6,9 @@ TEMPLATE_DEBUG = DEBUG
 
 root = lambda x: os.path.abspath(os.path.join(os.path.dirname(__file__), x))
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__))))
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 print sys.path
 
@@ -143,8 +144,8 @@ INSTALLED_APPS = (
     'social_auth',
     'south',
 
-    'utils',
-    'meetup',
+    'project.utils',
+    'project.meetup',
 )
 
 
