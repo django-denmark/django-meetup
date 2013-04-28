@@ -17,6 +17,7 @@
                 <li><a href="{% url 'meetup:meetup-create' %}">Create meetup</a></li>
                 <li><a href="{% url 'meetup:venue-create' %}">Create venue</a></li>
                 <li><a href="{% url 'meetup:venue-list' %}">Venues</a></li>
+                <li><a href="{% url 'admin:logout' %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url "socialauth_begin" "github" %}">Login</a></li>
                 {% endif %}
