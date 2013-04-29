@@ -55,7 +55,7 @@ class MeetupDetail(generic.DetailView):
                 'user_rsvp': user_rsvp,
             })
 
-        rsvps = self.get_object().rsvp_set.iterator()
+        rsvps = self.get_object().rsvp_set.order_by('rsvp').iterator()
 
         context.update({
             'rsvps': rsvps,
